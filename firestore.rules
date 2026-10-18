@@ -1,0 +1,34 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Test connection check on boot
+    match /test/connection {
+      allow read: if true;
+    }
+
+    // User Profile Rules
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if isOwner(userId);
+
+      // Chat Sessions Subcollection
+      match /chats/{chatId} {
+        allow read, write: if isOwner(userId);
+
+        // Messages Subcollection
+        match /messages/{messageId} {
+          allow read, write: if isOwner(userId);
+        }
+      }
+    }
+  }
+}

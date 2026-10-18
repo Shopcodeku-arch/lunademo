@@ -1,0 +1,142 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile data linked to Firebase Authentication and Google Account",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The user's unique Firebase Auth UID"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The Google email address of the user"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display name of the user"
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Avatar photo URL from Google"
+        },
+        "username": {
+          "type": "string",
+          "description": "Unique username handle for the user"
+        },
+        "avatarColor": {
+          "type": "string",
+          "description": "Hex color code for user avatar accent"
+        },
+        "systemPrompt": {
+          "type": "string",
+          "description": "Custom system instructions for Luna AI persona"
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Timestamp when the user registered"
+        },
+        "lastLoginAt": {
+          "type": "number",
+          "description": "Timestamp of the user's latest sign-in"
+        }
+      },
+      "required": ["id", "displayName", "createdAt"]
+    },
+    "ChatSession": {
+      "title": "ChatSession",
+      "description": "A conversation session belonging to an authenticated user",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique ID of the chat conversation session"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the chat owner"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title or summary of the chat"
+        },
+        "model": {
+          "type": "string",
+          "description": "AI model variant used (standard, coder, pro)"
+        },
+        "pinned": {
+          "type": "boolean",
+          "description": "Whether the chat is pinned to top of list"
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Creation timestamp in milliseconds"
+        },
+        "updatedAt": {
+          "type": "number",
+          "description": "Last updated timestamp in milliseconds"
+        }
+      },
+      "required": ["id", "userId", "title", "createdAt", "updatedAt"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Individual message within a chat conversation session",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique ID of the message"
+        },
+        "chatId": {
+          "type": "string",
+          "description": "ID of the parent chat conversation"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the user who owns the chat"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["user", "assistant", "system"],
+          "description": "Role of the message sender"
+        },
+        "content": {
+          "type": "string",
+          "description": "Text content of the message"
+        },
+        "model": {
+          "type": "string",
+          "description": "Model used to generate the message if assistant"
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Creation timestamp in milliseconds"
+        }
+      },
+      "required": ["id", "chatId", "userId", "role", "content", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/UserProfile"
+      },
+      "description": "Stores user profiles keyed by their Firebase Auth UID"
+    },
+    "/users/{userId}/chats/{chatId}": {
+      "schema": {
+        "$ref": "#/entities/ChatSession"
+      },
+      "description": "Stores conversation sessions owned by the authenticated user"
+    },
+    "/users/{userId}/chats/{chatId}/messages/{messageId}": {
+      "schema": {
+        "$ref": "#/entities/ChatMessage"
+      },
+      "description": "Stores messages within a specific conversation session"
+    }
+  }
+}

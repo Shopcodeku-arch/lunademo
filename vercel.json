@@ -12,7 +12,7 @@
   "rewrites": [
     {
       "source": "/__/auth/:path*",
-      "destination": "https://lunaailogin-928bd.firebaseapp.com/__/auth/:path*"
+      "destination": "https://lunaai-dde0f.firebaseapp.com/__/auth/:path*"
     },
     {
       "source": "/api/:path*",

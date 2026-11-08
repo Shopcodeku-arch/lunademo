@@ -1,0 +1,24 @@
+{
+  "users": {
+    "ardanrefando33@gmail.com": {
+      "username": "ardanrefando33@gmail.com",
+      "email": "ardanrefando33@gmail.com",
+      "displayName": "Ardan",
+      "avatarColor": "#3b82f6",
+      "createdAt": 1791891211053,
+      "lastLoginAt": 1791891211053
+    }
+  },
+  "chats": {
+    "chat_1791891218040_vc4i6": {
+      "id": "chat_1791891218040_vc4i6",
+      "username": "ardanrefando33@gmail.com",
+      "title": "Test Chat Baru",
+      "model": "standard",
+      "pinned": false,
+      "createdAt": 1791891218040,
+      "updatedAt": 1791891218040,
+      "messages": []
+    }
+  }
+}

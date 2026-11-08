@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /s/
+Disallow: /__/
+
+Sitemap: https://luna.gimoystudio.my.id/sitemap.xml

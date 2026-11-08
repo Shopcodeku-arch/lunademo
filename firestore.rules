@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Test connection check on boot
+    match /test/connection {
+      allow read: if true;
+    }
+
+    // Percakapan yang dibagikan lewat tautan /s/{shareId}.
+    // - Siapa pun yang tahu ID-nya boleh membaca (get). ID acak 12 karakter, jadi tidak bisa ditebak/dilist.
+    // - Hanya pemilik yang boleh membuat, memperbarui, menghapus, dan melihat daftar tautannya sendiri.
+    match /sharedChats/{shareId} {
+      allow get: if true;
+      allow list: if isAuthenticated() && resource.data.ownerUid == request.auth.uid;
+      allow create: if isAuthenticated()
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.keys().hasOnly(['chatId', 'ownerUid', 'ownerName', 'title', 'model', 'createdAt', 'updatedAt', 'messages'])
+        && request.resource.data.messages is list
+        && request.resource.data.messages.size() <= 300;
+      allow update: if isOwner(resource.data.ownerUid)
+        && request.resource.data.ownerUid == resource.data.ownerUid
+        && request.resource.data.keys().hasOnly(['chatId', 'ownerUid', 'ownerName', 'title', 'model', 'createdAt', 'updatedAt', 'messages'])
+        && request.resource.data.messages.size() <= 300;
+      allow delete: if isOwner(resource.data.ownerUid);
+    }
+
+    // User Profile Rules
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if isOwner(userId);
+
+      // Chat Sessions Subcollection
+      match /chats/{chatId} {
+        allow read, write: if isOwner(userId);
+
+        // Messages Subcollection
+        match /messages/{messageId} {
+          allow read, write: if isOwner(userId);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,492 @@
+/**
+ * Dongeng Indonesia: kumpulan cerita rakyat yang diceritakan ulang dengan bahasa sendiri.
+ * Cerita rakyat adalah warisan lisan bersama (domain publik); teks di bawah ini adalah penulisan ulang
+ * khusus untuk Perpustakaan Luna.
+ */
+
+export type DongengCategory = 'Fabel' | 'Legenda' | 'Cerita Rakyat';
+export type SceneKey =
+  | 'river'
+  | 'field'
+  | 'forest'
+  | 'sea'
+  | 'mountain'
+  | 'lake'
+  | 'temple'
+  | 'village'
+  | 'pond'
+  | 'night';
+
+export interface Dongeng {
+  slug: string;
+  title: string;
+  category: DongengCategory;
+  origin: string;
+  summary: string;
+  scene: SceneKey;
+  hue: number;
+  paragraphs: string[];
+  moral: string;
+  keywords: string[];
+  /** Opsional: gambar sampul buatan sendiri (mis. '/covers/si-kancil.webp' di folder public/). Bila diisi, menggantikan ilustrasi bawaan. */
+  image?: string;
+}
+
+export const DONGENG: Dongeng[] = [
+  {
+    slug: 'si-kancil-dan-buaya',
+    title: 'Si Kancil dan Buaya',
+    category: 'Fabel',
+    origin: 'Nusantara',
+    summary: 'Kancil yang cerdik menyeberangi sungai penuh buaya hanya dengan satu akal sederhana.',
+    scene: 'river',
+    hue: 172,
+    keywords: ['kancil', 'buaya', 'fabel', 'sungai'],
+    paragraphs: [
+      'Pada suatu musim kemarau, hutan tempat Si Kancil tinggal hampir kehabisan makanan. Dari tepi sungai yang lebar, Kancil melihat sebuah kebun di seberang. Pohon mangga, jambu, dan pisang di sana penuh buah masak. Perutnya berbunyi, tetapi sungai itu dihuni banyak buaya yang selalu lapar.',
+      'Kancil berpikir sejenak. Lalu ia berdiri di tepi air dan berseru, “Wahai Raja Buaya! Aku membawa kabar gembira untukmu!” Seekor buaya besar muncul ke permukaan dengan mata menyipit. “Kabar apa, Kancil? Jangan kira aku lupa bahwa kau lezat.”',
+      '“Baginda Raja Hutan akan mengadakan pesta besar di seberang sana, dan seluruh buaya diundang,” kata Kancil dengan tenang. “Aku diminta menghitung berapa banyak tamu yang akan datang agar makanannya cukup untuk semua.”',
+      'Raja Buaya tergiur. Ia memanggil seluruh kaumnya. Buaya-buaya itu berbaris rapat dari tepi ke tepi, kepala bertemu ekor, hingga sungai penuh punggung bersisik. “Baik, akan kuhitung satu per satu supaya tidak ada yang tertinggal,” kata Kancil.',
+      'Ia melompat ke punggung buaya pertama. “Satu!” Lompat lagi. “Dua! Tiga! Empat!” Kancil terus berhitung sambil melompat, hingga lompatan terakhir mendarat tepat di tepi seberang. Ia menoleh dan tersenyum lebar. “Terima kasih, Kawan-kawan! Jumlah kalian sudah kuketahui. Sayang sekali, pesta itu tidak pernah ada. Aku hanya butuh jembatan.”',
+      'Para buaya terdiam, malu karena telah terkecoh. Sementara itu, Kancil berlari ke dalam kebun dan makan buah sampai kenyang.',
+    ],
+    moral:
+      'Akal yang tenang dapat menolong kita keluar dari bahaya. Namun gunakanlah kecerdasan dengan bijak, dan jangan lupa bahwa kejujuran tetap lebih mulia daripada tipu daya.',
+  },
+  {
+    slug: 'si-kancil-mencuri-timun',
+    title: 'Si Kancil Mencuri Timun',
+    category: 'Fabel',
+    origin: 'Nusantara',
+    summary: 'Kancil yang tergoda timun di kebun Pak Tani belajar bahwa mengambil milik orang tidak pernah berakhir baik.',
+    scene: 'field',
+    hue: 138,
+    keywords: ['kancil', 'timun', 'pak tani', 'fabel'],
+    paragraphs: [
+      'Di tepi hutan ada sebuah kebun milik Pak Tani. Timunnya besar-besar, hijau, dan segar. Setiap sore Si Kancil mengintip dari balik semak sambil menelan ludah. Padahal hutan masih menyediakan banyak makanan untuknya.',
+      'Pada suatu malam, Kancil menyelinap lewat pagar yang bolong. Ia menggigit satu timun, lalu satu lagi, dan terus begitu sampai perutnya sangat kenyang. Esoknya ia datang lagi, dan lusa datang lagi. Pak Tani menjadi heran melihat timunnya selalu berkurang.',
+      'Pak Tani lalu membuat orang-orangan sawah dan melumuri tubuhnya dengan getah nangka yang lengket. Ia menancapkannya di tengah kebun. Malam itu Kancil datang seperti biasa. Melihat sosok berdiri di sana, ia membentak, “Minggir! Jangan halangi jalanku!” Karena tidak dijawab, Kancil menendangnya. Kakinya langsung menempel. Ia menendang dengan kaki yang lain, menyeruduk dengan kepala, dan semuanya ikut menempel erat.',
+      'Pagi harinya Pak Tani datang dan menemukan Kancil tidak bisa bergerak. “Jadi kamu pencuri timunku!” serunya. Kancil menahan napas dan berpura-pura mati. Ia diam seperti batu, matanya tertutup, dan tubuhnya lemas.',
+      '“Sudah mati rupanya,” gumam Pak Tani. Ia melepaskan Kancil dari getah lalu melemparkannya ke semak di luar pagar. Begitu menyentuh tanah, Kancil melompat bangun dan lari sekencang-kencangnya.',
+      'Sejak hari itu Kancil tidak pernah lagi mendekati kebun Pak Tani. Ia mencari makan di hutan dan berjanji tidak akan mengambil sesuatu yang bukan miliknya.',
+    ],
+    moral: 'Mengambil milik orang lain tanpa izin akan membawa masalah. Rasa cukup dan kejujuran membuat hidup lebih tenang.',
+  },
+  {
+    slug: 'si-kancil-dan-harimau',
+    title: 'Si Kancil dan Harimau',
+    category: 'Fabel',
+    origin: 'Nusantara',
+    summary: 'Seekor harimau yang lapar hampir menerkam Kancil, tetapi Kancil punya cerita tentang “gong milik raja”.',
+    scene: 'forest',
+    hue: 150,
+    keywords: ['kancil', 'harimau', 'fabel', 'hutan'],
+    paragraphs: [
+      'Suatu siang Si Kancil berjalan sambil bersenandung di dalam hutan. Tiba-tiba semak di depannya bergoyang dan seekor harimau besar melompat keluar. “Hari ini aku beruntung,” geram Harimau. “Sudah tiga hari aku belum makan, dan kau akan menjadi santapanku.”',
+      'Kancil terkejut, tetapi ia tidak lari. Ia tahu berlari hanya akan membuatnya tertangkap. Dengan suara riang ia berkata, “Aduh, Harimau, kau datang di saat yang kurang tepat. Aku sedang ditugaskan Baginda Raja menjaga gong pusaka. Gong itu sangat indah, dan tidak seorang pun boleh menabuhnya.”',
+      'Telinga Harimau tegak. “Gong pusaka? Seindah apa suaranya?” “Suaranya merdu sekali,” jawab Kancil. “Karena itu aku dilarang membiarkan siapa pun memukulnya.” Harimau menjadi penasaran. “Biarkan aku menabuhnya sekali saja. Setelah itu kau boleh pergi.”',
+      'Kancil pura-pura ragu. “Kalau begitu, aku pergi mencari air minum dulu supaya tidak melihat kau melanggar larangan.” Ia menunjuk sebuah benda bulat besar yang tergantung di dahan pohon. Sebenarnya itu bukan gong, melainkan sarang lebah yang besar.',
+      'Begitu Kancil menjauh, Harimau mengambil sebatang kayu dan memukul benda itu sekuat tenaga. Dengungan keras terdengar, dan ribuan lebah keluar dengan marah. Harimau melompat ke sungai terdekat dan menyelam untuk menghindari sengatan.',
+      'Dari balik pepohonan, Kancil tertawa kecil. Ia melanjutkan perjalanan sambil bersenandung lagi, dan sejak itu Harimau selalu berpikir dua kali sebelum mempercayai omongan orang.',
+    ],
+    moral: 'Ketenangan di saat genting membantu kita berpikir jernih. Sebaliknya, keserakahan membuat orang mudah tertipu.',
+  },
+  {
+    slug: 'malin-kundang',
+    title: 'Malin Kundang',
+    category: 'Legenda',
+    origin: 'Sumatera Barat',
+    summary: 'Anak yang melupakan ibunya setelah menjadi kaya, dan pelajaran yang tertinggal di Pantai Air Manis.',
+    scene: 'sea',
+    hue: 205,
+    keywords: ['malin kundang', 'sumatera barat', 'padang', 'pantai air manis'],
+    paragraphs: [
+      'Di sebuah desa nelayan di pesisir Sumatera Barat, hiduplah seorang janda miskin bersama anaknya, Malin Kundang. Mereka hidup sederhana. Sang ibu bekerja keras demi sesuap nasi, dan Malin tumbuh menjadi anak yang cekatan.',
+      'Ketika beranjak dewasa, Malin berkata, “Ibu, izinkan aku merantau. Aku ingin mengubah nasib kita.” Ibunya berat hati, namun akhirnya melepas anaknya dengan air mata dan doa. “Pulanglah kalau sudah berhasil, Nak. Ibu akan menunggu.”',
+      'Bertahun-tahun berlalu. Malin bekerja keras, menjadi pedagang yang sukses, dan menikahi seorang perempuan dari keluarga terpandang. Ia memiliki kapal besar dengan banyak anak buah. Suatu hari kapalnya singgah di pelabuhan kampung halamannya.',
+      'Kabar itu segera sampai ke telinga sang ibu. Ia berlari ke dermaga dengan pakaian lusuh dan memeluk Malin sambil menangis bahagia. “Malin, anakku! Akhirnya kau pulang!” Namun Malin malu di hadapan istri dan anak buahnya. “Perempuan tua ini bukan ibuku,” katanya dingin, lalu mendorongnya.',
+      'Sang ibu terjatuh. Hatinya hancur. Dengan tangan terangkat, ia memohon kepada Tuhan agar anak yang telah melupakan asal-usulnya diberi pelajaran. Langit tiba-tiba gelap, angin bertiup kencang, dan ombak menghantam kapal Malin hingga hancur.',
+      'Konon, tubuh Malin berubah menjadi batu yang masih bisa dilihat di Pantai Air Manis, Padang, bentuknya seperti orang yang bersimpuh menyesali perbuatannya.',
+    ],
+    moral: 'Setinggi apa pun kedudukan kita, jangan pernah melupakan orang tua dan asal-usul. Hormat dan syukur adalah harta yang paling berharga.',
+  },
+  {
+    slug: 'bawang-merah-bawang-putih',
+    title: 'Bawang Merah dan Bawang Putih',
+    category: 'Cerita Rakyat',
+    origin: 'Nusantara',
+    summary: 'Dua saudara tiri dengan sifat yang berlawanan, dan labu yang menunjukkan siapa yang benar-benar baik.',
+    scene: 'village',
+    hue: 330,
+    keywords: ['bawang merah', 'bawang putih', 'labu', 'cerita rakyat'],
+    paragraphs: [
+      'Bawang Putih tinggal bersama ibu tirinya dan saudara tirinya, Bawang Merah. Sejak ayahnya meninggal, semua pekerjaan rumah jatuh ke tangannya: menyapu, memasak, dan mencuci pakaian seluruh keluarga di sungai. Meski lelah, Bawang Putih tidak pernah mengeluh.',
+      'Pada suatu hari ketika mencuci, sehelai baju milik ibu tirinya hanyut terbawa arus. Bawang Putih mengejarnya menyusuri sungai, tetapi baju itu sudah hilang. Ibu tirinya marah. “Cari baju itu sampai ketemu, atau jangan pulang!”',
+      'Bawang Putih berjalan jauh sampai bertemu seorang nenek tua di tepi sungai. “Nek, apakah Nenek melihat baju yang hanyut?” “Ada, Cucuku. Aku sudah mengambilnya. Tinggallah di sini seminggu dan bantu aku, nanti bajunya kukembalikan.”',
+      'Selama seminggu Bawang Putih membersihkan rumah, memasak, dan merawat nenek itu dengan sabar. Saat ia pamit, sang nenek berkata, “Kau anak yang baik. Pilihlah satu dari dua labu ini sebagai hadiah.” Bawang Putih memilih labu yang kecil. “Ini sudah lebih dari cukup, Nek.”',
+      'Di rumah, labu itu dibelah dan ternyata berisi emas serta perhiasan. Ibu tirinya dan Bawang Merah terkejut, lalu iri. Bawang Merah sengaja menghanyutkan baju, menemui nenek itu, dan menyuruh nenek menyerahkan labu yang paling besar, tanpa mau membantu apa pun.',
+      'Labu besar itu dibawanya pulang dengan gembira. Namun ketika dibelah, isinya adalah binatang-binatang berbisa yang membuat Bawang Merah dan ibunya lari ketakutan. Sejak itu mereka menyadari kesalahan, dan Bawang Putih hidup tenteram dengan kebaikannya.',
+    ],
+    moral: 'Kebaikan dan ketulusan akan berbuah manis, sedangkan iri hati dan keserakahan hanya mendatangkan kesulitan bagi diri sendiri.',
+  },
+  {
+    slug: 'timun-mas',
+    title: 'Timun Mas',
+    category: 'Cerita Rakyat',
+    origin: 'Jawa Tengah',
+    summary: 'Gadis pemberani yang dikejar raksasa dan empat bekal ajaib dari ibunya.',
+    scene: 'field',
+    hue: 345,
+    keywords: ['timun mas', 'buto ijo', 'raksasa', 'jawa tengah'],
+    paragraphs: [
+      'Mbok Rondo hidup sendirian di sebuah gubuk dan sangat ingin memiliki anak. Pada suatu hari ia bertemu Buto Ijo, raksasa hijau yang menyeramkan. Buto Ijo memberinya biji mentimun. “Tanamlah, dan kau akan mendapat anak. Tetapi ketika anak itu berumur tujuh belas tahun, serahkan kepadaku.” Karena sangat menginginkan anak, Mbok Rondo menyetujuinya.',
+      'Biji itu tumbuh menjadi tanaman besar, dan di antara buahnya ada sebuah mentimun emas. Di dalamnya terdapat bayi perempuan yang cantik. Mbok Rondo menamainya Timun Mas, dan merawatnya penuh kasih sayang.',
+      'Tujuh belas tahun berlalu. Timun Mas tumbuh menjadi gadis cantik, dan Buto Ijo datang menagih janji. Mbok Rondo mencari akal. “Anakku masih terlalu muda. Datanglah seminggu lagi,” katanya. Malam itu ia mendatangi seorang pertapa dan menerima empat bungkusan: biji mentimun, jarum, garam, dan terasi.',
+      'Ketika Buto Ijo kembali, Timun Mas berlari ke dalam hutan. Raksasa itu mengejarnya sambil mengaum. Saat ia hampir tersusul, Timun Mas menebarkan biji mentimun. Seketika tumbuh kebun mentimun yang luas, dan Buto Ijo sibuk makan sampai kenyang.',
+      'Dikejar lagi, Timun Mas menebarkan jarum yang berubah menjadi hutan bambu tajam. Buto Ijo berhasil melewatinya dengan susah payah. Lalu garam yang ditebarkan menjadi lautan luas. Buto Ijo berenang menyeberang, hampir menangkap Timun Mas.',
+      'Bungkusan terakhir adalah terasi. Begitu ditebarkan, terasi berubah menjadi lautan lumpur mendidih. Buto Ijo terperosok ke dalamnya, tidak mampu keluar, dan lenyap. Timun Mas pulang dengan selamat, lalu hidup bahagia bersama ibunya.',
+    ],
+    moral: 'Keberanian dan akal yang tenang dapat menyelamatkan kita dari bahaya. Pikirkan baik-baik sebelum membuat janji, karena janji harus dipertanggungjawabkan.',
+  },
+  {
+    slug: 'sangkuriang',
+    title: 'Sangkuriang dan Tangkuban Parahu',
+    category: 'Legenda',
+    origin: 'Jawa Barat',
+    summary: 'Asal-usul Gunung Tangkuban Parahu di dekat Bandung, tentang perahu yang ditendang hingga terbalik.',
+    scene: 'mountain',
+    hue: 262,
+    keywords: ['sangkuriang', 'tangkuban parahu', 'dayang sumbi', 'bandung'],
+    paragraphs: [
+      'Dahulu di tanah Pasundan hiduplah seorang putri bernama Dayang Sumbi. Ia memiliki anak laki-laki yang gagah, Sangkuriang, dan seekor anjing setia bernama Tumang. Tumang sering menemani Sangkuriang berburu di hutan.',
+      'Suatu hari Sangkuriang berburu tetapi tidak mendapat buruan apa pun. Karena kesal, ia melampiaskan amarahnya kepada Tumang sampai anjing itu terluka. Dayang Sumbi sangat marah dan sedih ketika mengetahuinya, sebab Tumang adalah sahabat setia keluarga mereka. Ia memukul kepala Sangkuriang dengan sendok nasi hingga meninggalkan bekas luka, lalu mengusirnya dari rumah.',
+      'Sangkuriang pergi mengembara selama bertahun-tahun, sementara Dayang Sumbi diberi kemampuan awet muda. Suatu hari mereka bertemu kembali tanpa saling mengenali. Sangkuriang terpesona dan ingin menikahi Dayang Sumbi.',
+      'Ketika melihat bekas luka di kepala pemuda itu, Dayang Sumbi sadar bahwa ia adalah putranya sendiri. Ia berusaha menolak, tetapi Sangkuriang terus memaksa. Maka Dayang Sumbi mengajukan syarat yang mustahil: bendungan sungai Citarum dan sebuah perahu besar harus selesai dalam satu malam.',
+      'Dengan bantuan makhluk halus, Sangkuriang hampir menyelesaikan semuanya. Cemas, Dayang Sumbi menebarkan kain merah di ufuk timur sehingga langit tampak seperti fajar, dan ayam-ayam mulai berkokok.',
+      'Sangkuriang yakin ia gagal. Dengan marah ia menendang perahu yang hampir jadi hingga terbalik. Perahu itu berubah menjadi gunung yang kini dikenal sebagai Tangkuban Parahu, atau “perahu yang terbalik”.',
+    ],
+    moral: 'Amarah dan sikap tidak mau mendengar sering membawa penyesalan. Berpikirlah sebelum bertindak, dan hargailah nasihat orang tua.',
+  },
+  {
+    slug: 'legenda-danau-toba',
+    title: 'Legenda Danau Toba',
+    category: 'Legenda',
+    origin: 'Sumatera Utara',
+    summary: 'Seorang nelayan, seekor ikan emas, dan janji yang menciptakan danau terbesar di Indonesia.',
+    scene: 'lake',
+    hue: 190,
+    keywords: ['danau toba', 'samosir', 'sumatera utara', 'ikan emas'],
+    paragraphs: [
+      'Di sebuah lembah subur di Sumatera Utara hiduplah seorang petani yang rajin bernama Toba. Selain bertani, ia juga gemar memancing. Ia hidup sendirian di gubuk kecil dan merasa kesepian.',
+      'Suatu pagi Toba memancing dan mendapat seekor ikan emas yang sangat indah. Ia membawanya pulang dan menaruhnya di dalam bejana. Esok harinya, ketika pulang dari ladang, rumahnya sudah rapi dan makanan sudah tersedia. Ia penasaran, lalu mengintip. Dari dalam bejana keluar seorang gadis cantik, yang ternyata penjelmaan ikan emas itu.',
+      '“Aku bersedia menjadi istrimu, asal kau berjanji tidak akan pernah menyebut bahwa aku berasal dari ikan,” kata sang gadis. Toba berjanji. Mereka menikah, lalu dikaruniai seorang anak laki-laki bernama Samosir yang sangat suka makan.',
+      'Suatu siang Samosir diminta mengantar makanan untuk ayahnya di ladang. Karena lapar, ia menghabiskan sebagian besar bekal itu di tengah jalan. Toba yang kelaparan marah besar ketika tahu hal itu, dan dalam kemarahannya ia berseru, “Dasar anak ikan!”',
+      'Toba segera sadar bahwa ia telah melanggar janji. Istrinya sedih dan berkata kepada Samosir, “Naiklah ke bukit itu, Nak.” Ia sendiri berdoa, lalu hujan deras turun tanpa henti. Air memenuhi lembah hingga menjadi danau yang luas.',
+      'Dari tempat yang tinggi, Samosir selamat. Tanah tempatnya berdiri menjadi sebuah pulau di tengah danau itu: Pulau Samosir di Danau Toba.',
+    ],
+    moral: 'Jagalah ucapan dan tepatilah janji. Kata-kata yang diucapkan dalam amarah bisa menimbulkan penyesalan yang panjang.',
+  },
+  {
+    slug: 'roro-jonggrang',
+    title: 'Roro Jonggrang dan Candi Prambanan',
+    category: 'Legenda',
+    origin: 'Jawa Tengah / DI Yogyakarta',
+    summary: 'Seribu candi dalam satu malam, dan siasat putri cantik yang menunda semuanya.',
+    scene: 'temple',
+    hue: 232,
+    keywords: ['roro jonggrang', 'candi prambanan', 'bandung bondowoso', 'yogyakarta'],
+    paragraphs: [
+      'Di Kerajaan Prambanan, Raja Prabu Boko memiliki seorang putri yang sangat cantik bernama Roro Jonggrang. Kerajaan itu kemudian diserang oleh Bandung Bondowoso, seorang pangeran yang sakti dan bala tentaranya yang kuat. Prabu Boko gugur dalam pertempuran, dan Bandung Bondowoso menguasai Prambanan.',
+      'Melihat kecantikan Roro Jonggrang, Bandung Bondowoso jatuh hati dan ingin menikahinya. Roro Jonggrang tidak ingin menikah dengan orang yang telah mengalahkan ayahnya. Namun ia tidak berani menolak secara terang-terangan, sehingga ia mengajukan dua syarat: dibuatkan sumur yang dalam dan seribu candi, semuanya selesai dalam satu malam.',
+      'Bandung Bondowoso menyetujuinya. Dengan kesaktian dan bantuan makhluk halus, sumur itu selesai dengan cepat. Lalu ia memanggil bala bantuan, dan satu per satu candi mulai berdiri dalam waktu singkat.',
+      'Roro Jonggrang gelisah ketika menyadari seribu candi hampir selesai. Ia membangunkan para dayang dan perempuan desa untuk menumbuk padi dan menyalakan api di ufuk timur. Suara lesung dan cahaya merah membuat langit tampak seperti menjelang pagi, sehingga ayam jantan berkokok.',
+      'Makhluk halus mengira fajar telah tiba, lalu menghilang. Candi yang berhasil didirikan baru sembilan ratus sembilan puluh sembilan. Bandung Bondowoso marah karena merasa ditipu dan mengutuk Roro Jonggrang menjadi arca batu untuk menggenapi candi yang keseribu.',
+      'Hingga kini, candi-candi yang megah itu dikenal sebagai Candi Prambanan, dan arca Roro Jonggrang masih dapat dilihat di bilik utara candi Siwa.',
+    ],
+    moral: 'Kejujuran lebih baik daripada akal yang menipu, dan kesombongan karena kekuatan sering berakhir dengan penyesalan.',
+  },
+  {
+    slug: 'keong-mas',
+    title: 'Keong Mas',
+    category: 'Cerita Rakyat',
+    origin: 'Jawa Timur',
+    summary: 'Putri yang dikutuk menjadi keong emas, dan kebaikan hati seorang nenek yang menolongnya.',
+    scene: 'pond',
+    hue: 178,
+    keywords: ['keong mas', 'candra kirana', 'inu kertapati', 'jawa timur'],
+    paragraphs: [
+      'Di Kerajaan Daha hiduplah dua putri, Candra Kirana dan Galuh Ajeng. Candra Kirana bertunangan dengan Raden Inu Kertapati dari Kerajaan Kahuripan. Galuh Ajeng iri dan ingin mengambil pangeran itu. Ia pergi menemui seorang penyihir untuk meminta bantuan.',
+      'Penyihir itu menyihir Candra Kirana menjadi seekor keong emas, lalu menghanyutkannya ke sungai. Keong itu terbawa arus hingga tersangkut di jala seorang nenek yang sedang mencari ikan. Nenek itu, Mbok Rondo, membawanya pulang dan memeliharanya dengan sayang.',
+      'Sejak itu, setiap kali Mbok Rondo pergi mencari ikan, rumahnya selalu menjadi rapi. Nasi dan lauk sudah tersedia di meja saat ia pulang. Ia heran dan ingin tahu siapa yang melakukannya. Maka suatu hari ia pura-pura pergi, tetapi bersembunyi di dalam rumah.',
+      'Tak lama kemudian keong emas itu keluar dari wadahnya dan berubah menjadi seorang putri jelita yang mulai memasak. Mbok Rondo segera keluar dan memecahkan wadah keong itu agar sang putri tidak bisa kembali ke bentuk keong. “Siapa kau, Nak?” tanyanya. Candra Kirana menceritakan semua yang terjadi, dan kutukan itu pun berakhir.',
+      'Sementara itu, Raden Inu Kertapati mencari tunangannya ke mana-mana. Setelah menempuh perjalanan jauh, ia tiba di rumah Mbok Rondo dan bertemu kembali dengan Candra Kirana. Keduanya menikah, dan Galuh Ajeng menyesali perbuatannya.',
+    ],
+    moral: 'Kebaikan hati akan membawa pertolongan di saat sulit, sedangkan iri hati hanya akan merugikan diri sendiri.',
+  },
+  {
+    slug: 'asal-usul-rawa-pening',
+    title: 'Asal-Usul Rawa Pening',
+    category: 'Legenda',
+    origin: 'Jawa Tengah',
+    summary: 'Seorang anak yang ditolak karena penampilannya, dan tongkat yang menunjukkan siapa dirinya.',
+    scene: 'lake',
+    hue: 125,
+    keywords: ['rawa pening', 'baru klinting', 'ambarawa', 'jawa tengah'],
+    paragraphs: [
+      'Di sebuah desa bernama Ngasem, penduduknya sedang bersiap merayakan pesta besar. Seorang anak yang berpenampilan buruk dan berpenyakit kulit datang ke desa itu. Namanya Baru Klinting. Ia kelaparan dan meminta sedikit makanan.',
+      'Dari rumah ke rumah ia mengetuk, tetapi semua orang mengusirnya. “Pergi! Kami tidak punya makanan untuk orang sepertimu,” kata mereka. Baru Klinting terus berjalan sampai ke ujung desa dengan hati yang sedih.',
+      'Di sebuah gubuk kecil, seorang janda tua bernama Nyai Latung menyambutnya dengan ramah. Ia memberinya makan, bahkan menyuruhnya duduk dan beristirahat. Baru Klinting berterima kasih. “Nek, jika nanti terdengar suara gemuruh, siapkan lesung dan naiklah ke atasnya.”',
+      'Setelah itu Baru Klinting kembali ke tengah desa. Ia menancapkan sebatang lidi ke tanah dan berkata lantang, “Siapa yang dapat mencabut lidi ini?” Orang-orang menertawakan, lalu mencoba satu per satu. Tidak seorang pun mampu mencabutnya, sekuat apa pun mereka menarik.',
+      'Akhirnya Baru Klinting sendiri yang mencabutnya. Dari lubang bekas lidi itu memancar air deras, makin lama makin besar, hingga seluruh desa tenggelam. Nyai Latung yang menaiki lesung selamat terapung di atas air.',
+      'Desa itu kini menjadi sebuah danau luas yang disebut Rawa Pening, di dekat Ambarawa, Jawa Tengah.',
+    ],
+    moral: 'Jangan menilai orang dari penampilannya. Berbuat baik kepada sesama, siapa pun mereka, akan selalu menjadi pilihan yang benar.',
+  },
+  {
+    slug: 'lutung-kasarung',
+    title: 'Lutung Kasarung',
+    category: 'Cerita Rakyat',
+    origin: 'Jawa Barat',
+    summary: 'Putri yang diasingkan ke hutan dan seekor lutung misterius yang membantunya.',
+    scene: 'night',
+    hue: 285,
+    keywords: ['lutung kasarung', 'purbasari', 'jawa barat', 'sunda'],
+    paragraphs: [
+      'Di Kerajaan Pasir Batang, sang raja memiliki dua putri, Purbararang dan Purbasari. Ketika raja hendak turun takhta, ia memilih Purbasari yang bijaksana sebagai penerusnya. Keputusan itu membuat Purbararang iri.',
+      'Dengan bantuan seorang penyihir, Purbararang membuat kulit adiknya dipenuhi bintik hitam. Ia berkata bahwa Purbasari terkena penyakit dan tidak pantas memimpin, lalu mengasingkannya ke hutan.',
+      'Di hutan, Purbasari hidup sederhana dan sabar. Ia bertemu dengan seekor lutung, sejenis monyet, yang ternyata adalah Guruminda, seorang pangeran dari kahyangan yang dikutuk menjadi lutung. Lutung itu menjaga dan membantu Purbasari dengan setia.',
+      'Atas pertolongan Guruminda, Purbasari mandi di sebuah telaga ajaib. Bintik-bintik hitam di kulitnya hilang, dan ia kembali cantik. Mendengar hal itu, Purbararang terkejut dan tidak terima. Ia menantang Purbasari mengadu keahlian.',
+      'Berkali-kali Purbararang kalah dalam adu kecantikan dan kemampuan. Akhirnya ia pun mengakui kesalahannya. Guruminda kembali ke wujud pangeran dan menikah dengan Purbasari. Mereka memimpin kerajaan dengan adil dan bijaksana.',
+    ],
+    moral: 'Kesabaran dan ketulusan akan menemukan jalan keluarnya. Iri hati hanya membuat seseorang kehilangan kedamaian.',
+  },
+
+  {
+    slug: 'si-kancil-dan-siput',
+    title: 'Si Kancil dan Siput Berlomba Lari',
+    category: 'Fabel',
+    origin: 'Nusantara',
+    summary: 'Kancil yang sombong menantang siput berlomba lari, tanpa tahu bahwa siput punya banyak sahabat.',
+    scene: 'field',
+    hue: 118,
+    keywords: ['kancil', 'siput', 'lomba lari', 'fabel'],
+    paragraphs: [
+      'Si Kancil dikenal sebagai hewan paling cerdik dan paling gesit di hutan. Karena sering dipuji, lama-lama ia menjadi sombong. Setiap hari ia berkeliling sambil membanggakan kecepatannya, dan tidak jarang ia menertawakan hewan lain yang bergerak lamban.',
+      'Suatu pagi Kancil bertemu seekor siput yang sedang merayap di atas daun. “Hei, Siput! Kau berjalan seperti orang yang tidak punya tujuan. Berlombalah denganku kalau berani,” katanya sambil tertawa. Siput menoleh dengan tenang. “Baik, Kancil. Tetapi izinkan aku berlomba besok pagi. Aku perlu bersiap.”',
+      'Kancil tertawa makin keras dan setuju. Ia mengira kemenangan sudah ada di tangannya. Sementara itu, Siput pulang dan mengumpulkan seluruh kerabatnya. “Teman-teman, malam ini bersembunyilah di rumput sepanjang jalur lomba. Setiap kali Kancil memanggil, jawablah dari tempat yang lebih jauh di depannya.” Para siput yang mirip satu sama lain pun menyetujui rencana itu.',
+      'Keesokan paginya lomba dimulai. Kancil melesat secepat angin. Setelah berlari cukup jauh, ia berhenti dan berseru, “Siput, kau di mana?” Dari rumput di depannya terdengar suara, “Aku di sini, Kancil!” Kancil terkejut dan berlari lebih cepat. Tidak lama kemudian ia memanggil lagi, dan jawaban yang sama terdengar dari tempat yang lebih jauh.',
+      'Berkali-kali Kancil mengulang panggilannya, dan berkali-kali Siput selalu terdengar di depannya. Napasnya memburu, kakinya gemetar, hingga akhirnya ia sampai di garis akhir dan melihat seekor siput sudah duduk di sana sambil tersenyum. Kancil roboh karena lelah dan malu.',
+      'Sejak hari itu Kancil tidak pernah lagi meremehkan siapa pun. Ia belajar bahwa tubuh yang cepat tidak ada artinya bila hati dipenuhi kesombongan.',
+    ],
+    moral: 'Jangan meremehkan orang lain. Kerja sama dan perencanaan yang matang dapat mengalahkan kecepatan, sedangkan kesombongan hanya membuat kita jatuh.',
+  },
+  {
+    slug: 'kura-kura-dan-monyet',
+    title: 'Kura-Kura dan Monyet',
+    category: 'Fabel',
+    origin: 'Nusantara',
+    summary: 'Dua sahabat berbagi sebatang pohon pisang, tetapi hanya satu yang mau bekerja keras merawatnya.',
+    scene: 'forest',
+    hue: 168,
+    keywords: ['kura-kura', 'monyet', 'pohon pisang', 'fabel'],
+    paragraphs: [
+      'Di tepi sungai hiduplah seekor kura-kura dan seekor monyet yang bersahabat. Pada suatu hari mereka menemukan sebatang pohon pisang yang hanyut terbawa arus. “Mari kita bagi dua dan menanamnya,” kata Kura-Kura. “Aku mau bagian atas yang berdaun hijau,” sahut Monyet cepat, “karena pasti akan tumbuh lebih dulu.” Kura-Kura pun mengambil bagian bawah yang berakar.',
+      'Mereka menanam bagian masing-masing. Monyet menancapkan batang berdaunnya dan menunggu, tetapi beberapa hari kemudian daunnya layu dan batangnya mengering. Sebaliknya, bagian milik Kura-Kura tumbuh tunas demi tunas. Kura-Kura rajin menyiram dan membersihkan rumput di sekelilingnya.',
+      'Berbulan-bulan kemudian pohon itu tinggi dan berbuah lebat. Kura-Kura ingin memetik, tetapi tubuhnya tidak bisa memanjat. Ia meminta bantuan Monyet. “Tentu saja, Kawan!” jawab Monyet dengan riang.',
+      'Namun setelah berada di atas pohon, Monyet melahap pisang yang matang satu demi satu dan membuang kulitnya ke bawah. Kura-Kura hanya mendapat kulit pisang. “Hei, bagianku mana?” tanyanya. Monyet pura-pura tidak mendengar dan terus makan.',
+      'Kura-Kura tidak marah. Diam-diam ia mengumpulkan bambu-bambu runcing dan menancapkannya mengelilingi pohon itu. Ketika Monyet turun dengan perut kenyang, ia terpeleset dan jatuh di antara bambu, sehingga kakinya terluka. “Aduh, tolong aku!” rintihnya.',
+      'Kura-Kura menolongnya dengan sabar sambil berkata, “Aku tidak ingin menyakitimu, tetapi kau harus belajar berlaku adil.” Monyet malu dan meminta maaf. Sejak saat itu ia ikut merawat pohon, dan setiap panen mereka berbagi sama rata.',
+    ],
+    moral: 'Hasil yang baik datang dari kerja keras dan kesabaran. Serakah hanya merugikan diri sendiri, sedangkan berbagi mempererat persahabatan.',
+  },
+  {
+    slug: 'sura-dan-baya',
+    title: 'Asal-Usul Kota Surabaya',
+    category: 'Legenda',
+    origin: 'Jawa Timur',
+    summary: 'Ikan hiu dan buaya yang sama-sama kuat memperebutkan wilayah, hingga lahirlah nama Surabaya.',
+    scene: 'sea',
+    hue: 218,
+    keywords: ['surabaya', 'sura', 'baya', 'hiu', 'buaya', 'jawa timur'],
+    paragraphs: [
+      'Pada zaman dahulu, di laut dan sungai di tanah Jawa Timur hiduplah dua binatang yang sangat kuat. Yang satu adalah Sura, ikan hiu yang tangkas dan berani. Yang lain adalah Baya, buaya yang besar dan tangguh. Keduanya disegani oleh binatang lain.',
+      'Suatu hari mereka bertemu ketika berburu mangsa. Sura ingin menguasai seluruh perairan, sedangkan Baya merasa sungai dan daratan di sekitarnya adalah miliknya. Pertengkaran pun terjadi, dan tidak ada yang mau mengalah karena sama-sama merasa paling kuat.',
+      'Para binatang lain khawatir. Seekor kura-kura tua memberi saran, “Daripada bertarung terus-menerus, bagilah wilayah. Sura berkuasa di laut, Baya berkuasa di darat dan sungai.” Kedua binatang itu setuju dan berjanji tidak saling melewati batas, yaitu tempat air laut bertemu daratan.',
+      'Waktu berlalu. Ketika musim kering datang, ikan di laut berkurang. Sura mulai mencari makan sampai ke muara sungai, yang sebenarnya bukan wilayahnya. Baya melihatnya dan marah. “Kau melanggar janji!” serunya. Sura menjawab bahwa muara masih bagian dari air, sehingga masih miliknya.',
+      'Pertarungan sengit pun pecah di muara itu. Air bergolak, ombak bergelombang, dan keduanya saling menggigit. Baya menggigit ekor Sura, dan Sura menggigit ekor Baya. Setelah sama-sama kelelahan dan terluka, mereka menyadari bahwa pertengkaran itu tidak membawa kebaikan.',
+      'Sura kembali ke laut dan Baya tinggal di sungai. Tempat pertarungan mereka kemudian dikenal sebagai Surabaya, gabungan nama Sura dan Baya. Hingga kini, ikan hiu dan buaya menjadi lambang kota itu.',
+    ],
+    moral: 'Menepati janji dan menghormati batas adalah kunci kedamaian. Pertengkaran yang dipicu keras kepala hanya merugikan kedua belah pihak.',
+  },
+  {
+    slug: 'cindelaras',
+    title: 'Cindelaras dan Ayam Jago Ajaib',
+    category: 'Cerita Rakyat',
+    origin: 'Jawa Timur',
+    summary: 'Anak yang tumbuh di hutan dan ayam jagonya yang dapat berkokok menyebut siapa ayahnya.',
+    scene: 'village',
+    hue: 275,
+    keywords: ['cindelaras', 'ayam jago', 'raden putra', 'jawa timur'],
+    paragraphs: [
+      'Raden Putra, raja Kerajaan Jenggala, memiliki seorang permaisuri yang baik hati. Selir raja merasa iri. Dengan tipu daya, ia menuduh permaisuri berniat mencelakai raja. Raja yang termakan fitnah memerintahkan permaisuri dibawa ke hutan dan diasingkan.',
+      'Di hutan itu, sang permaisuri melahirkan seorang putra yang diberi nama Cindelaras. Ia dibesarkan dengan penuh kasih di sebuah gubuk sederhana. Anak itu tumbuh sehat, cerdas, dan berani. Suatu hari seekor rajawali menjatuhkan sebutir telur di dekatnya. Cindelaras mengerami telur itu hingga menetas menjadi seekor anak ayam.',
+      'Ayam itu tumbuh menjadi jago yang gagah dan memiliki keistimewaan. Setiap kali berkokok, suaranya terdengar seperti kata-kata: “Kukuruyuk, tuanku Cindelaras, rumahnya di tengah rimba, ayahnya Raden Putra.” Cindelaras terkejut, dan ibunya pun menceritakan siapa ayahnya yang sebenarnya.',
+      'Cindelaras bertekad menemui ayahnya. Ia berangkat ke kerajaan membawa ayam jagonya. Di sana sedang digelar sebuah lomba adu ayam jago, dan ayam-ayam raja selalu menang. Cindelaras menantang, dan sang raja menyetujuinya dengan syarat taruhan yang besar.',
+      'Ayam jago Cindelaras bertarung dengan lincah dan mengalahkan ayam raja. Raja heran, lalu ayam itu berkokok keras, menyebut nama Cindelaras dan Raden Putra. Raja tertegun dan bertanya kepada anak muda itu tentang asal-usulnya.',
+      'Cindelaras menceritakan semuanya. Raja menyadari kekeliruannya, memeluk anaknya, dan menjemput permaisuri kembali ke istana. Selir yang berbuat jahat pun mendapat hukuman, dan kerajaan kembali damai.',
+    ],
+    moral: 'Kebenaran akhirnya akan terungkap. Fitnah dapat menyakiti orang baik untuk sementara, tetapi kejujuran selalu menemukan jalannya.',
+  },
+  {
+    slug: 'jaka-tarub',
+    title: 'Jaka Tarub dan Tujuh Bidadari',
+    category: 'Legenda',
+    origin: 'Jawa Tengah',
+    summary: 'Pemuda desa yang menyembunyikan selendang seorang bidadari, dan penyesalan yang menyusul kemudian.',
+    scene: 'lake',
+    hue: 295,
+    keywords: ['jaka tarub', 'nawang wulan', 'bidadari', 'selendang'],
+    paragraphs: [
+      'Jaka Tarub adalah pemuda desa yang rajin berburu di hutan. Suatu pagi ia mendengar suara tawa riang dari sebuah telaga yang jernih. Dari balik semak, ia melihat tujuh bidadari sedang mandi, sementara selendang mereka tersampir di tepi telaga.',
+      'Jaka Tarub tergoda dan mengambil salah satu selendang, milik bidadari bernama Nawang Wulan. Saat hari menjelang siang, enam bidadari memakai selendangnya dan terbang kembali ke kahyangan. Nawang Wulan menangis karena kehilangan selendangnya dan tidak bisa pulang.',
+      'Jaka Tarub datang seolah-olah menolong. Ia membawa Nawang Wulan ke rumahnya, dan lama-lama mereka menikah. Mereka dikaruniai seorang putri bernama Nawangsih. Sebelum memasak, Nawang Wulan berpesan, “Kakang, jangan pernah membuka tutup periuk ini.” Dengan kesaktiannya, ia cukup memasak sebutir padi untuk menghasilkan nasi sepanci penuh.',
+      'Lumbung padi mereka tak pernah habis. Namun Jaka Tarub penasaran. Ketika istrinya pergi, ia membuka tutup periuk, dan kesaktian itu pun hilang. Sejak saat itu Nawang Wulan harus menumbuk dan memasak padi seperti manusia biasa, sehingga persediaan padi cepat menipis.',
+      'Saat lumbung hampir kosong, Nawang Wulan menemukan selendangnya terselip di dasar tumpukan padi. Ia mengerti bahwa selama ini suaminya menyembunyikannya. Dengan hati yang kecewa, ia memakai selendang itu dan terbang pulang ke kahyangan.',
+      'Sebelum pergi, ia berpesan agar Jaka Tarub merawat Nawangsih baik-baik, dan berjanji akan turun menemui putrinya bila ia menyanyikan lagu pengantar tidur. Jaka Tarub menyesali perbuatannya seumur hidup.',
+    ],
+    moral: 'Kejujuran adalah dasar kepercayaan. Mengambil milik orang lain atau menyembunyikan kebenaran akan menimbulkan penyesalan yang sulit diperbaiki.',
+  },
+  {
+    slug: 'gunung-bromo',
+    title: 'Legenda Gunung Bromo',
+    category: 'Legenda',
+    origin: 'Jawa Timur',
+    summary: 'Asal-usul nama Bromo dan upacara Kasada dari kisah Roro Anteng dan Joko Seger.',
+    scene: 'mountain',
+    hue: 350,
+    keywords: ['gunung bromo', 'roro anteng', 'joko seger', 'kasada', 'tengger'],
+    paragraphs: [
+      'Pada zaman dahulu, di kaki sebuah gunung di Jawa Timur hiduplah Roro Anteng, putri seorang raja, dan Joko Seger, pemuda berbudi luhur dari kalangan brahmana. Keduanya saling mencintai dan akhirnya menikah. Mereka tinggal di daerah Tengger, yang namanya berasal dari gabungan akhir nama mereka: Teng dari Anteng dan Ger dari Seger.',
+      'Mereka hidup bahagia dan makmur, tetapi belum dikaruniai anak. Bertahun-tahun mereka berdoa dengan penuh kesabaran. Akhirnya mereka bersemedi di puncak gunung, memohon kepada Sang Hyang Widhi agar dianugerahi keturunan.',
+      'Doa mereka didengar. Suara gaib berkata bahwa mereka akan mendapat dua puluh lima anak, dengan satu syarat: anak yang terakhir harus dikembalikan dengan cara dipersembahkan ke dalam kawah gunung. Dengan hati berat namun penuh harap, mereka menyetujuinya.',
+      'Roro Anteng dan Joko Seger dikaruniai dua puluh lima anak. Mereka bahagia, tetapi semakin lama mereka semakin takut kehilangan si bungsu, Kesuma. Mereka mengingkari janji itu dan tidak membawa Kesuma ke gunung.',
+      'Tiba-tiba kawah gunung bergemuruh dan api menyala-nyala. Kesuma yang bijak mengerti apa yang terjadi. Ia berkata kepada orang tuanya, “Ayah, Ibu, janji harus ditepati agar semua saudaraku selamat.” Dengan ikhlas ia melangkah ke kawah dan menghilang.',
+      'Sebelum menghilang, Kesuma berpesan agar setiap tahun pada hari ke-14 bulan Kasada masyarakat Tengger mengirim hasil bumi ke kawah sebagai tanda syukur. Hingga kini, upacara Yadnya Kasada masih dilaksanakan di Gunung Bromo.',
+    ],
+    moral: 'Menepati janji adalah kewajiban, dan rasa syukur kepada alam serta Sang Pencipta patut dijaga dari generasi ke generasi.',
+  },
+  {
+    slug: 'telaga-warna',
+    title: 'Legenda Telaga Warna',
+    category: 'Legenda',
+    origin: 'Jawa Barat',
+    summary: 'Sebuah kalung yang dibuang oleh putri raja, dan telaga yang berubah menjadi penuh warna.',
+    scene: 'lake',
+    hue: 200,
+    keywords: ['telaga warna', 'puncak', 'bogor', 'gilang rukmini'],
+    paragraphs: [
+      'Pada zaman dahulu di tanah Pasundan, Prabu Suwartalaya dan Ratu Purbamanah memerintah dengan adil dan bijaksana. Rakyat mencintai mereka, tetapi mereka sendiri belum dikaruniai anak. Setelah bertahun-tahun menanti dan berdoa, akhirnya lahirlah seorang putri yang diberi nama Gilang Rukmini.',
+      'Karena sangat menyayangi putri tunggalnya, raja dan ratu selalu menuruti semua permintaannya. Gilang Rukmini tumbuh menjadi gadis yang cantik, tetapi manja dan tidak mengenal kata “tidak”. Ia hampir tidak pernah mendengar nasihat.',
+      'Menjelang ulang tahunnya yang ke-17, raja ingin memberi hadiah istimewa. Ia menugaskan para pengrajin membuat kalung dari permata-permata terbaik. Rakyat dari seluruh negeri ikut menyumbangkan batu mulia mereka sebagai tanda cinta kepada putri raja.',
+      'Pada hari perayaan, raja menyerahkan kalung itu. Namun Gilang Rukmini justru cemberut. “Kalung ini kurang indah. Aku tidak mau!” katanya, lalu ia melemparkannya hingga talinya putus dan permata-permata itu berhamburan ke lantai.',
+      'Semua orang terkejut. Ratu menangis, dan rakyat yang menyaksikan merasa sedih karena sumbangan mereka tidak dihargai. Tak lama kemudian, tanah bergetar dan air memancar dari tempat jatuhnya permata itu. Air terus meninggi hingga istana tenggelam dan berubah menjadi telaga yang luas.',
+      'Permata-permata di dasar telaga memantulkan cahaya matahari, sehingga air telaga tampak berwarna-warni. Itulah Telaga Warna, yang hingga kini dapat dikunjungi di kawasan Puncak, Bogor.',
+    ],
+    moral: 'Hargailah pemberian dan ketulusan orang lain. Anak yang dimanjakan tanpa dididik bersikap rendah hati dapat kehilangan banyak hal berharga.',
+  },
+  {
+    slug: 'batu-menangis',
+    title: 'Batu Menangis',
+    category: 'Legenda',
+    origin: 'Kalimantan Barat',
+    summary: 'Anak gadis yang malu mengakui ibunya, dan batu yang masih meneteskan air hingga kini.',
+    scene: 'mountain',
+    hue: 228,
+    keywords: ['batu menangis', 'darmi', 'kalimantan barat', 'ibu'],
+    paragraphs: [
+      'Di sebuah desa terpencil di Kalimantan Barat tinggal seorang janda miskin bersama anak gadisnya, Darmi. Sang ibu bekerja keras setiap hari di ladang agar Darmi bisa hidup layak. Namun Darmi tumbuh menjadi gadis yang malas dan hanya suka berdandan.',
+      'Setiap kali ibunya meminta bantuan, Darmi selalu menolak. “Aku tidak mau mengotori tanganku,” katanya. Meski begitu, sang ibu tidak pernah mengeluh. Ia tetap bekerja, menyisihkan uang, dan membelikan Darmi pakaian bagus.',
+      'Suatu hari Darmi meminta ibunya mengantarkan ke pasar yang jauh. Ia berjalan di depan dengan pakaian indah, sedangkan ibunya mengikuti di belakang dengan pakaian lusuh sambil membawa keranjang belanja. Orang-orang di jalan bertanya, “Siapa perempuan tua di belakangmu itu, Nak?”',
+      'Darmi menunduk malu. Ia merasa gengsi jika orang tahu bahwa perempuan miskin itu adalah ibunya. “Dia hanya pembantuku,” jawabnya berbohong. Hal itu terulang berkali-kali di sepanjang jalan, dan setiap kali ibunya mendengar, hatinya makin pedih.',
+      'Dengan air mata berlinang, sang ibu berdoa, “Ya Tuhan, jika anakku tidak mau mengakuiku, berilah ia pelajaran.” Seketika kaki Darmi terasa kaku. Perlahan-lahan tubuhnya berubah menjadi batu mulai dari kaki, dan ia menangis menyesal sambil memohon maaf.',
+      'Namun semuanya sudah terlambat. Hingga kini, batu itu dipercaya masih meneteskan air seperti orang yang menangis. Masyarakat menamainya Batu Menangis, sebagai pengingat agar anak selalu menghormati ibunya.',
+    ],
+    moral: 'Ibu adalah orang yang paling berjasa dalam hidup kita. Menghargai dan mengakui jasa orang tua jauh lebih berharga daripada gengsi.',
+  },
+  {
+    slug: 'putri-mandalika',
+    title: 'Putri Mandalika dan Bau Nyale',
+    category: 'Legenda',
+    origin: 'Nusa Tenggara Barat',
+    summary: 'Putri cantik dari Lombok yang menjaga persatuan rakyatnya, dan asal-usul pesta Bau Nyale.',
+    scene: 'sea',
+    hue: 188,
+    keywords: ['putri mandalika', 'bau nyale', 'lombok', 'ntb', 'nyale'],
+    paragraphs: [
+      'Di tanah Lombok, Nusa Tenggara Barat, hiduplah seorang putri raja yang terkenal akan kecantikan dan kebaikan hatinya. Namanya Putri Mandalika. Ia ramah kepada siapa saja, sehingga rakyat sangat mencintainya.',
+      'Kabar tentang Putri Mandalika menyebar ke berbagai kerajaan. Banyak pangeran datang melamarnya, masing-masing membawa pasukan dan hadiah. Mereka semua merasa pantas mendampingi sang putri, dan tidak ada yang mau mengalah.',
+      'Putri Mandalika gelisah. Jika ia memilih salah satu, pangeran yang lain pasti marah dan perang bisa pecah, sehingga rakyat yang tidak bersalah akan menderita. Ia merenung berhari-hari mencari cara agar semua pihak tetap damai.',
+      'Akhirnya ia mengumumkan bahwa ia akan memberi jawaban pada hari ke-20 bulan ke-10 menurut kalender Sasak, menjelang fajar di Pantai Seger. Pada hari itu semua pangeran dan rakyat berkumpul di pantai dengan hati berdebar.',
+      'Putri Mandalika berdiri di atas batu karang dan berkata, “Aku tidak dapat menjadi milik satu orang. Aku akan menjadi milik kalian semua, rakyat negeri ini.” Setelah itu, ia melangkah ke laut dan menghilang di antara ombak.',
+      'Tak lama kemudian muncullah ribuan cacing laut berwarna-warni di permukaan air. Rakyat percaya itu adalah jelmaan sang putri, dan menyebutnya nyale. Hingga kini, masyarakat Lombok merayakannya dengan pesta Bau Nyale setiap tahun.',
+    ],
+    moral: 'Persatuan dan kedamaian lebih berharga daripada kepentingan pribadi. Pemimpin yang baik mengutamakan kebaikan rakyatnya.',
+  },
+  {
+    slug: 'ande-ande-lumut',
+    title: 'Ande-Ande Lumut dan Klenting Kuning',
+    category: 'Cerita Rakyat',
+    origin: 'Jawa Timur',
+    summary: 'Gadis yang sederhana namun santun, dan pemuda yang mencari pendamping dari hati, bukan penampilan.',
+    scene: 'river',
+    hue: 160,
+    keywords: ['ande-ande lumut', 'klenting kuning', 'yuyu kangkang', 'jawa timur'],
+    paragraphs: [
+      'Klenting Kuning adalah gadis yatim piatu yang tinggal bersama ibu tiri dan tiga saudara tirinya. Ia diperlakukan seperti pembantu: bangun paling pagi, mencuci, memasak, dan membersihkan rumah. Meski begitu, ia selalu bekerja dengan sabar.',
+      'Suatu hari tersiar kabar bahwa seorang pemuda tampan bernama Ande-Ande Lumut sedang mencari istri. Ia tinggal di seberang sungai yang lebar. Ketiga saudara tiri Klenting Kuning segera berdandan dan berangkat dengan perhiasan terbaik.',
+      'Di tepi sungai tidak ada jembatan. Satu-satunya cara menyeberang adalah naik di punggung Yuyu Kangkang, kepiting raksasa yang baik hati tetapi tidak suka diperlakukan kasar. Para saudara tiri itu menghina Yuyu Kangkang dan tidak mau berterima kasih. Setelah menyeberang, mereka malah pergi begitu saja.',
+      'Klenting Kuning yang menyusul belakangan memberi salam dengan santun. “Paman Yuyu Kangkang, bolehkah aku menumpang menyeberang? Aku akan membayar dengan tenaga dan terima kasih.” Yuyu Kangkang tersenyum dan membawanya ke seberang dengan selamat.',
+      'Di rumah Ande-Ande Lumut, para saudara tiri disambut dengan ramah, tetapi pemuda itu menolak mereka satu per satu. Ia tahu bagaimana perlakuan mereka kepada Yuyu Kangkang. “Aku mencari istri yang rendah hati,” katanya.',
+      'Ketika Klenting Kuning datang dengan pakaian sederhana, Ande-Ande Lumut tersenyum. Ia memilihnya karena kebaikan dan kesantunannya. Klenting Kuning akhirnya hidup bahagia, dan saudara-saudara tirinya menyadari kesalahan mereka.',
+    ],
+    moral: 'Kecantikan sejati terletak pada hati dan sikap. Menghormati siapa pun, termasuk yang menolong kita, adalah tanda budi yang baik.',
+  },
+  {
+    slug: 'manik-angkeran',
+    title: 'Manik Angkeran dan Asal Selat Bali',
+    category: 'Legenda',
+    origin: 'Bali',
+    summary: 'Pemuda yang gemar berjudi, naga penjaga permata, dan garis di tanah yang menjadi selat.',
+    scene: 'mountain',
+    hue: 275,
+    keywords: ['manik angkeran', 'selat bali', 'naga besukih', 'bali'],
+    paragraphs: [
+      'Di tanah Jawa dahulu hidup seorang brahmana yang bijak bernama Begawan Sidhimantra. Ia memiliki seorang putra yang tampan, Manik Angkeran. Sayangnya, Manik Angkeran gemar berjudi dan sering kalah sehingga hartanya habis dan ia banyak berutang.',
+      'Ketika para penagih datang mengejarnya, Manik Angkeran meminta bantuan ayahnya. Begawan Sidhimantra sedih, tetapi ia tahu ada seekor naga sakti bernama Naga Besukih yang tinggal di Gunung Agung dan dapat memberi harta. Ia pergi ke sana membawa lonceng, lalu berdoa dengan khusyuk.',
+      'Naga Besukih mendengar permohonan itu dan memberikan emas serta permata. Begawan Sidhimantra pulang dan membayar utang anaknya. Namun Manik Angkeran tidak jera. Uang itu dihabiskannya lagi, dan ia kembali meminta lebih banyak.',
+      'Kali ini Manik Angkeran mencuri lonceng ayahnya dan pergi sendiri ke Gunung Agung. Ia membunyikan lonceng itu, dan Naga Besukih muncul. Sang naga memberinya permata yang berkilau. Namun Manik Angkeran yang serakah malah memotong ekor naga itu untuk mengambil permata yang menempel, lalu kabur.',
+      'Naga Besukih marah dan menyemburkan api ke jejak kaki Manik Angkeran, sehingga pemuda itu menjadi sakit parah. Begawan Sidhimantra bergegas ke Gunung Agung, meminta maaf atas perbuatan anaknya, dan memohon agar sang naga memulihkan Manik Angkeran. Naga itu bersedia, dengan syarat Manik Angkeran tidak boleh mengganggunya lagi.',
+      'Manik Angkeran pulih dan menyesali perbuatannya. Begawan Sidhimantra lalu menancapkan tongkatnya dan membuat garis panjang di tanah. Air laut mengisi garis itu hingga menjadi selat yang memisahkan Pulau Jawa dan Pulau Bali. Selat itu kini dikenal sebagai Selat Bali.',
+    ],
+    moral: 'Keserakahan dan kebiasaan buruk dapat menghancurkan hidup kita dan menyakiti orang yang kita sayangi. Menyesal dan berubah selalu lebih baik daripada mengulangi kesalahan.',
+  },
+];
+
+export function getDongeng(slug: string): Dongeng | undefined {
+  return DONGENG.find((d) => d.slug === slug);
+}
+
+export function readMinutes(d: Dongeng): number {
+  const words = d.paragraphs.join(' ').split(/\s+/).length;
+  return Math.max(1, Math.round(words / 170));
+}
+
+/** Pilihan utama untuk sambutan & beranda perpustakaan (Si Kancil dan lainnya). */
+export const FEATURED_SLUGS = [
+  'si-kancil-dan-buaya',
+  'malin-kundang',
+  'bawang-merah-bawang-putih',
+  'timun-mas',
+  'sangkuriang',
+  'legenda-danau-toba',
+];

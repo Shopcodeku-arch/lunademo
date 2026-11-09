@@ -55,7 +55,7 @@ export function requestOverchat(messages: OverchatMessage[], signal?: AbortSigna
   const payload = {
     chatId: randomUUID(),
     frequency_penalty: 0,
-    max_tokens: 4000,
+    max_tokens: 10000,
     messages,
     model: OVERCHAT_MODEL,
     personaId: 'best-free-ai-chat-landing',
